@@ -6,7 +6,7 @@ const nextConfig = {
 
   reactStrictMode: true,
   swcMinify: true,
-
+  experimental: { appDir: true },
   // Uncoment to add domain whitelist
   // images: {
   //   domains: [

@@ -1,56 +1,147 @@
-import type { Config } from 'tailwindcss';
-import defaultTheme from 'tailwindcss/defaultTheme';
+/** @type {import('tailwindcss').Config} */
 
-export default {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    extend: {
-      fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+    fontFamily: {
+      primary: [
+        '"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu, Cantarell,"Open Sans","Helvetica Neue",sans-serif',
+      ],
+    },
+    fontSize: {
+      xs: '1.3rem',
+      sm: '1.4rem',
+      md: '1.6rem',
+      lg: '1.8rem',
+      xl: ['2.2rem', '1.3'],
+      '2xl': '2.4rem',
+      '3xl': '2.6rem',
+      '4xl': '3.2rem',
+      '5xl': ['4rem', '1.1'],
+      '6xl': ['4.4rem', '1.1'],
+      '7xl': ['4.8rem', '1.1'],
+      '8xl': ['8rem', '1.1'],
+    },
+    colors: {
+      white: '#ffffff',
+      'off-white': '#f7f8f8',
+      'transparent-white': 'rgba(255,255,255,0.08)',
+      background: '#000212',
+      gray: '#858699',
+      'gray-dark': '#222326',
+      transparent: 'transparent',
+      'primary-text': '#b4bcd0',
+    },
+    spacing: {
+      0: '0',
+      1: '0.4rem',
+      2: '0.8rem',
+      3: '1.2rem',
+      4: '1.6rem',
+      5: '2rem',
+      6: '2.4rem',
+      7: '2.8rem',
+      8: '3.2rem',
+      9: '3.6rem',
+      10: '4rem',
+      11: '4.4rem',
+      12: '4.8rem',
+      13: '5.2rem',
+      14: '5.6rem',
+      15: '6rem',
+      16: '6.4rem',
+      'navigation-height': 'var(--navigation-height)',
+    },
+    backgroundImage: {
+      'primary-gradient':
+        'linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%)',
+      'page-gradient':
+        'radial-gradient(ellipse 80% 50% at 50% -20%,rgba(120,119,198,0.3),transparent)',
+      'hero-gradient':
+        'radial-gradient(ellipse 50% 80% at 20% 40%,rgba(93,52,221,0.1),transparent), radial-gradient(ellipse 50% 80% at 80% 50%,rgba(120,119,198,0.15),transparent);',
+      'hero-glow':
+        'conic-gradient(from 230.29deg at 51.63% 52.16%, rgb(36, 0, 255) 0deg, rgb(0, 135, 255) 67.5deg, rgb(108, 39, 157) 198.75deg, rgb(24, 38, 163) 251.25deg, rgb(54, 103, 196) 301.88deg, rgb(105, 30, 255) 360deg);',
+      'glow-lines':
+        'linear-gradient(var(--direction),#9d9bf2 0.43%,#7877c6 14.11%,rgba(120,119,198,0) 62.95%)',
+      'radial-faded':
+        'radial-gradient(circle at bottom center,var(--color),transparent 70%)',
+      'glass-gradient':
+        'linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)',
+    },
+    boxShadow: { primary: 'rgba(80, 63, 205, 0.5) 0px 1px 40px' },
+    keyframes: {
+      'fade-in': {
+        from: { opacity: 0, transform: 'translateY(-10px)' },
+        to: { opacity: 1, transform: 'none' },
       },
-      colors: {
-        primary: {
-          // Customize it on globals.css :root
-          50: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
-          100: 'rgb(var(--tw-color-primary-100) / <alpha-value>)',
-          200: 'rgb(var(--tw-color-primary-200) / <alpha-value>)',
-          300: 'rgb(var(--tw-color-primary-300) / <alpha-value>)',
-          400: 'rgb(var(--tw-color-primary-400) / <alpha-value>)',
-          500: 'rgb(var(--tw-color-primary-500) / <alpha-value>)',
-          600: 'rgb(var(--tw-color-primary-600) / <alpha-value>)',
-          700: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
-          800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
-          900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
-          950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
-        },
-        dark: '#222222',
+      'image-rotate': {
+        '0%': { transform: 'rotateX(25deg)' },
+        '25%': { transform: 'rotateX(25deg) scale(0.9)' },
+        '60%': { transform: 'none' },
+        '100%': { transform: 'none' },
       },
-      keyframes: {
-        flicker: {
-          '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
-            opacity: '0.99',
-            filter:
-              'drop-shadow(0 0 1px rgba(252, 211, 77)) drop-shadow(0 0 15px rgba(245, 158, 11)) drop-shadow(0 0 1px rgba(252, 211, 77))',
-          },
-          '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': {
-            opacity: '0.4',
-            filter: 'none',
-          },
+      'image-glow': {
+        '0%': {
+          opacity: 0,
+          'animation-timing-function': 'cubic-bezier(0.74,0.25,0.76,1)',
         },
-        shimmer: {
-          '0%': {
-            backgroundPosition: '-700px 0',
-          },
-          '100%': {
-            backgroundPosition: '700px 0',
-          },
+        '10%': {
+          opacity: 1,
+          'animation-timing-function': 'cubic-bezier(0.12,0.01,0.08,0.99)',
+        },
+        '100%': {
+          opacity: 0.2,
         },
       },
-      animation: {
-        flicker: 'flicker 3s linear infinite',
-        shimmer: 'shimmer 1.3s linear infinite',
+      'sketch-lines': {
+        '0%': { 'stroke-dashoffset': 1 },
+        '50%': { 'stroke-dashoffset': 0 },
+        '99%': { 'stroke-dashoffset': 0 },
+        '100%': { visiblity: 'hidden' },
+      },
+      'glow-line-horizontal': {
+        '0%': { opacity: 0, transform: 'translateX(0)' },
+        '5%': { opacity: 1, transform: 'translateX(0)' },
+        '90%': { opacity: 1 },
+        '100%': { opacity: 0, transform: 'translateX(min(60vw, 45rem))' },
+      },
+      'glow-line-vertical': {
+        '0%': { opacity: 0, transform: 'translateY(0)' },
+        '5%': { opacity: 1, transform: 'translateY(0)' },
+        '90%': { opacity: 1 },
+        '100%': { opacity: 0, transform: 'translateY(min(21vw, 45rem))' },
+      },
+      zap: {
+        '0%, 9%, 11%, 100% ': {
+          fill: 'transparent',
+        },
+        '10%': {
+          fill: 'white',
+        },
+      },
+      bounce: {
+        '50%': {
+          transform: 'scale(0.98)',
+        },
       },
     },
+    animation: {
+      'fade-in': 'fade-in 1000ms var(--animation-delay, 0ms) ease forwards',
+      'image-rotate': 'image-rotate 1400ms ease forwards',
+      'image-glow': 'image-glow 4100ms 600ms ease-out forwards',
+      'sketch-lines': 'sketch-lines 1200ms ease-out forwards ',
+      'glow-line-horizontal':
+        'glow-line-horizontal var(--animation-duration) ease-in forwards',
+      'glow-line-vertical':
+        'glow-line-vertical var(--animation-duration) ease-in forwards',
+      zap: 'zap 2250ms calc(var(--index) * 20ms) linear infinite',
+      bounce: '240ms ease 0s 1 running bounce',
+    },
   },
-  plugins: [require('@tailwindcss/forms')],
-} satisfies Config;
+};
+
+export {};
